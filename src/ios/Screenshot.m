@@ -36,8 +36,9 @@
 	NSString *jpgPath = [NSTemporaryDirectory() stringByAppendingPathComponent:path];
 
 	UIImage *image = [self getScreenshot];
-	NSData *imageData = UIImageJPEGRepresentation(image,[quality floatValue]);
-	[imageData writeToFile:jpgPath atomically:NO];
+	UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+	//NSData *imageData = UIImageJPEGRepresentation(image,[quality floatValue]);
+	//[imageData writeToFile:jpgPath atomically:NO];
 
 	CDVPluginResult* pluginResult = nil;
 	NSDictionary *jsonObj = [ [NSDictionary alloc]
